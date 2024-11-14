@@ -11,12 +11,12 @@ class GameObject(pygame.sprite.Sprite):
     super(GameObject, self).__init__()
     self.surf = pygame.Surface((width, height))
     self.surf.fill((255, 0, 255))
-    self.rect = self.surf.get_rect()
+    self.rect = self.surf.get_rect(topleft=(x, y))
     self.x = x
     self.y = y
 
   def render(self, screen):
-    screen.blit(self.surf, (self.x, self.y))
+    screen.blit(self.surf, self.rect.topleft)
 
 # Instance of GameObject
 box = GameObject(120, 300, 50, 50)
