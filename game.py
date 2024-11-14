@@ -32,10 +32,7 @@ while running:
 
   # Clear screen
   screen.fill((255, 255, 255))
-      
-  # Draw a circle
-  pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
-
+  
   # Render game object
   apple.render(screen)
   strawberry.render(screen)
