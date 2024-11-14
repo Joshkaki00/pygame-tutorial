@@ -19,8 +19,9 @@ class GameObject(pygame.sprite.Sprite):
     screen.blit(self.surf, (self.x, self.y))
 
 # Instance of GameObject
-apple = GameObject(100, 360, 'apple.png')
-strawberry = GameObject(100, 260, 'strawberry.png')
+apple = GameObject(100, 350, 'apple.png')
+strawberry = GameObject(100, 200, 'strawberry.png')
+
 
 
 # Create the game loop
