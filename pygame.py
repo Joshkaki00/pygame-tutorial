@@ -1,4 +1,5 @@
 # Import and initialize pygame
+import pygame.draw
 import pygame
 pygame.init()
 # Configure the screen
@@ -13,5 +14,6 @@ while running:
       
   # Draw a circle
   screen.fill((255, 255, 255))
+  pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
   # Update the window
   pygame.display.flip()
