@@ -11,7 +11,7 @@ class GameObject(pygame.sprite.Sprite):
   # Remove width and height and add image here!
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
-    self.surf = pygame.image.load(image) # ADD!
+    self.surf = pygame.image.load(image).convert_alpha() # ADD!
     self.x = x
     self.y = y
 
