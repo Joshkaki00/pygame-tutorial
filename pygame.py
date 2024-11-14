@@ -19,6 +19,10 @@ class GameObject(pygame.sprite.Sprite):
 # Create the game loop
 running = True
 while running:
+  # Clear screen
+  screen.fill((255, 255, 255))
+  # Draw the surface
+  screen.blit(surf, (100, 120))
   # Looks at events
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
