@@ -1,5 +1,4 @@
 # Import and initialize pygame
-import pygame.draw
 import pygame
 pygame.init()
 # Configure the screen
