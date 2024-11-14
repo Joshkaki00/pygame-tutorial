@@ -20,7 +20,7 @@ class GameObject(pygame.sprite.Sprite):
 
 # Instance of GameObject
 apple = GameObject(120, 300, 'apple.png')
-strawberry = GameObject(210, 210, 'strawberry.png')
+strawberry = GameObject(250, 250, 'strawberry.png')
 
 # Create the game loop
 running = True
