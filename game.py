@@ -20,12 +20,22 @@ class GameObject(pygame.sprite.Sprite):
 
 class Apple(GameObject):
  def __init__(self):
-   x = randint(50, 400)
-   super(Apple, self).__init__(x, 0, 'apple.png')
+   super(Apple, self).__init__(0, 0, 'apple.png')
+   self.dx = 0
    self.dy = (randint(0, 200) / 100) + 1
+   self.reset() # call reset here! 
 
  def move(self):
+   self.x += self.dx
    self.y += self.dy
+   # Check the y position of the apple
+   if self.y > 500: 
+     self.reset()
+
+ # add a new method
+ def reset(self):
+   self.x = randint(50, 400)
+   self.y = -64
 
 # Load the images
 apple_image = 'apple.png'
