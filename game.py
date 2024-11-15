@@ -58,7 +58,7 @@ while running:
     obj.render(screen)
 
   # Update and Render moving apple
-  moving_apple.x += 1
+  moving_apple.x += 2
   moving_apple.render(screen)
 
   # Get the clock
