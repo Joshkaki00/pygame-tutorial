@@ -32,7 +32,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Load moving apple image
-apple = GameObject(0, 250, apple_image)
+apple = Apple()
 
 # Grid setup
 start_x, start_y = 70, 70
