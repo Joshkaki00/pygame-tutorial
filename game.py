@@ -23,7 +23,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Grid setup
-start_x, start_y = 65, 65
+start_x, start_y = 70, 70
 spacing = 145
 
 # List to hold all GameObjects on grid
