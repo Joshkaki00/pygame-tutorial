@@ -32,7 +32,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Load moving apple image
-moving_apple = GameObject(0, 250, apple_image)
+apple = GameObject(0, 250, apple_image)
 
 # Grid setup
 start_x, start_y = 70, 70
@@ -70,10 +70,8 @@ while running:
     obj.render(screen)
 
   # Draw apple
-  moving_apple.move()
-  moving_apple.render(screen)
-
-  
+  apple.move()
+  apple.render(screen)
 
   # Set the frame rate
   clock.tick(60)
