@@ -23,9 +23,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Load moving apple image
-moving_apple_image = 'apple.png'.convert_alpha()
-moving_apple_image = GameObject(0, 250, moving_apple_image)
-moving_apple_image.x += 1
+moving_apple = GameObject(0, 250, apple_image)
 
 # Grid setup
 start_x, start_y = 70, 70
@@ -59,8 +57,9 @@ while running:
   for obj in objects:
     obj.render(screen)
 
-  # Render moving apple
-  moving_apple_image.render(screen)
+  # Update and Render moving apple
+  moving_apple.x += 1
+  moving_apple.render(screen)
 
   # Get the clock
   clock = pygame.time.Clock()
