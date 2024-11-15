@@ -23,7 +23,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Grid setup
-start_x = 150, start_y = 150
+start_x, start_y = 150, 150
 spacing = 100
 
 # List to hold all GameObjects on grid
@@ -50,9 +50,9 @@ while running:
   # Clear screen
   screen.fill((255, 255, 255))
 
-  # Render game object
-  apple.render(screen)
-  strawberry.render(screen)
+  # Render game objects in grid
+  for obj in objects:
+    obj.render(screen)
 
   # Update the window
   pygame.display.flip()
