@@ -18,11 +18,26 @@ class GameObject(pygame.sprite.Sprite):
   def render(self, screen):
     screen.blit(self.surf, (self.x, self.y))
 
-# Instance of GameObject
-apple = GameObject(100, 350, 'apple.png')
-strawberry = GameObject(100, 200, 'strawberry.png')
+# Load the images
+apple_image = 'apple.png'
+strawberry_image = 'strawberry.png'
 
+# Grid setup
+start_x = 150, start_y = 150
+spacing = 100
 
+# List to hold all GameObjects on grid
+objects = []
+
+# Create a 3x3 grid of GameObjects
+for row in range(3):
+  for col in range(3):
+    # Alternate between apple and strawberry
+    image = apple_image if (row + col) % 2 == 0 else strawberry_image
+    x = start_x + col * spacing
+    y = start_y + row * spacing
+    obj = GameObject(x, y, image)
+    objects.append(obj)
 
 # Create the game loop
 running = True
