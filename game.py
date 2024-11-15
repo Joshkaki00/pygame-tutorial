@@ -22,6 +22,11 @@ class GameObject(pygame.sprite.Sprite):
 apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
+# Load moving apple image
+moving_apple_image = 'apple.png'.convert_alpha()
+moving_apple_image = GameObject(0, 250, moving_apple_image)
+moving_apple_image.x += 1
+
 # Grid setup
 start_x, start_y = 70, 70
 spacing = 145
@@ -53,6 +58,15 @@ while running:
   # Render game objects in grid
   for obj in objects:
     obj.render(screen)
+
+  # Render moving apple
+  moving_apple_image.render(screen)
+
+  # Get the clock
+  clock = pygame.time.Clock()
+
+  # Set the frame rate
+  clock.tick(60)
 
   # Update the window
   pygame.display.flip()
