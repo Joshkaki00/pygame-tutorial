@@ -24,7 +24,7 @@ strawberry_image = 'strawberry.png'
 
 # Grid setup
 start_x, start_y = 80, 80
-spacing = 120
+spacing = 140
 
 # List to hold all GameObjects on grid
 objects = []
