@@ -1,6 +1,7 @@
 # Import and initialize pygame
 import pygame
 pygame.init()
+from random import randint
 
 # Configure the screen
 screen = pygame.display.set_mode([500, 500])
