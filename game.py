@@ -19,6 +19,15 @@ class GameObject(pygame.sprite.Sprite):
   def render(self, screen):
     screen.blit(self.surf, (self.x, self.y))
 
+class Apple(GameObject):
+ def __init__(self):
+   x = randint(50, 400)
+   super(Apple, self).__init__(x, 0, 'apple.png')
+   self.dy = (randint(0, 200) / 100) + 1
+
+ def move(self):
+   self.y += self.dy
+
 # Load the images
 apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
