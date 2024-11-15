@@ -51,6 +51,9 @@ for row in range(3):
     y = start_y + row * spacing
     obj = GameObject(x, y, image)
     objects.append(obj)
+    
+# Get the clock
+clock = pygame.time.Clock()
 
 # Create the game loop
 running = True
@@ -71,8 +74,7 @@ while running:
   moving_apple.move()
   moving_apple.render(screen)
 
-  # Get the clock
-  clock = pygame.time.Clock()
+  
 
   # Set the frame rate
   clock.tick(60)
