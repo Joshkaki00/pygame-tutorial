@@ -45,8 +45,12 @@ strawberry_image = 'strawberry.png'
 apple = Apple()
 
 # Grid setup
-start_x, start_y = 70, 70
+grid_size = 3
 spacing = 145
+total_width = (grid_size - 1) * spacing
+total_height = (grid_size - 1) * spacing
+start_x = (500 - total_width) / 2
+start_y = (500 - total_height) / 2
 
 # List to hold all GameObjects on grid
 objects = []
