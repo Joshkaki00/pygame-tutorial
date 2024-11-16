@@ -49,8 +49,8 @@ grid_size = 3
 spacing = 145
 total_width = (grid_size - 1) * spacing
 total_height = (grid_size - 1) * spacing
-start_x = (500 - total_width) / 2
-start_y = (500 - total_height) / 2
+start_x = (500 - total_width) // 2 - spacing // 2
+start_y = (500 - total_height) // 2 - spacing // 2
 
 # List to hold all GameObjects on grid
 objects = []
