@@ -49,7 +49,7 @@ apple = Apple()
 grid_size = 3
 spacing = 64 + 20 # 64 pixels for image size, 20 pixels for spacing
 total_width = (grid_size *64 ) + ((grid_size - 1) * 20)
-total_height = (grid_size - 1) * ((grid_size - 1) * 20)
+total_height = (grid_size * 64) + ((grid_size - 1) * 20)
 start_x = (500 - total_width) / 2
 start_y = (500 - total_height) / 2
 
