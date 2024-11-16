@@ -43,7 +43,7 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Load moving apple image
-apple = Apple(apple_image)
+apple = Apple()
 
 # Grid setup
 grid_size = 3
