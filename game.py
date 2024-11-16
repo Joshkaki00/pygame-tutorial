@@ -1,7 +1,7 @@
 # Import and initialize pygame
 import pygame
 pygame.init()
-from random import randint
+from random import randint, choice
 
 # Configure the screen
 screen = pygame.display.set_mode([500, 500])
@@ -34,15 +34,16 @@ class Apple(GameObject):
 
  # add a new method
  def reset(self):
-   self.x = randint(50, 400)
-   self.y = -64
+  lanes = [93, 218, 343]
+  self.x = choice(lanes)
+  self.y = -64
 
 # Load the images
 apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Load moving apple image
-apple = Apple()
+apple = Apple(apple_image)
 
 # Grid setup
 grid_size = 3
