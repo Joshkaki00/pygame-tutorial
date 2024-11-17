@@ -85,8 +85,13 @@ class Player(GameObject):
     # Keep player on screen
     if self.x < 0:
       self.x = 0
-    elif self.x > 500 - 64:
-      self.x = 500 - 64
+    elif self.x > 500 - self.surf.get_width():
+      self.x = 500 - self.surf.get_width()
+    
+    if self.y < 0:
+      self.y = 0
+    elif self.y > 500 - self.surf.get_height():
+      self.y = 500 - self.surf.get_height()
 
   def reset(self):
     self.x = 250 - 32
