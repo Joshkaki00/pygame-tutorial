@@ -32,13 +32,13 @@ class Apple(GameObject):
     self.reset()
 
   def move(self):
-    self.rect.y += self.dy
-    if self.rect.y > 500:  # Reset when off-screen
+    self.y += self.dy
+    if self.y > 500:  # Reset when off-screen
         self.reset()
 
   def reset(self):
-    self.rect.x = choice(lanes)
-    self.rect.y = -64
+    self.x = choice(lanes)
+    self.y = -64
 
 # Define Strawberry class
 class Strawberry(GameObject):
