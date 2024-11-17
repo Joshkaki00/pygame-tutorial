@@ -108,22 +108,6 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 all_sprites.add(falling_apple)
 all_sprites.add(moving_strawberry)
-
-# Grid setup
-grid_size = 3
-spacing = 64 + 75 # 64 pixels for image size, 100 pixels for spacing
-total_width = (grid_size - 1) * spacing + 64
-total_height = (grid_size - 1) * spacing + 64
-start_x = (screen_width - total_width) / 2
-start_y = (screen_height - total_height) / 2
-
-# Create a 3x3 grid of GameObjects
-objects = [
-    GameObject(start_x + col * spacing, start_y + row * spacing,
-               'apple.png' if (row + col) % 2 == 0 else 'strawberry.png')
-    for row in range(grid_size)
-    for col in range(grid_size)
-]
     
 # Get the clock
 clock = pygame.time.Clock()
@@ -149,10 +133,6 @@ while running:
 
   # Clear screen
   screen.fill((255, 255, 255))
-
-  # Render game objects in grid
-  for obj in objects:
-    obj.render(screen)
 
   # Move and render all sprites
   for entity in all_sprites:
