@@ -130,6 +130,7 @@ bomb = Bomb()
 
 # Make a group
 all_sprites = pygame.sprite.Group(player, apple, strawberry, bomb)
+fruit_sprites = pygame.sprite.Group(apple, strawberry)
 
 # Get the clock
 clock = pygame.time.Clock()
@@ -160,6 +161,14 @@ while running:
   for entity in all_sprites:
     entity.move()
     entity.render(screen)
+
+  # Check for collisions
+  fruit = pygame.sprite.spritecollideany(player, fruit_sprites)
+  if fruit:
+    fruit.reset()
+
+  if pygame.sprite.collide_rect(player, bomb):
+    running = False
 
   # Set the frame rate
   clock.tick(60)
