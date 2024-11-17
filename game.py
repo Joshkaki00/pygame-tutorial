@@ -12,7 +12,7 @@ class GameObject(pygame.sprite.Sprite):
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
     self.image = pygame.image.load(image).convert_alpha()
-    self.rect = self.surf.get_rect(topleft=(x, y))
+    self.rect = self.image.get_rect(topleft=(x, y))
 
   def move(self):
      pass
