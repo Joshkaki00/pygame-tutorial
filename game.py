@@ -18,6 +18,7 @@ class GameObject(pygame.sprite.Sprite):
   def render(self, screen):
     screen.blit(self.surf, (self.x, self.y))
 
+#Define Apple class
 class Apple(GameObject):
  def __init__(self):
    super(Apple, self).__init__(0, 0, 'apple.png')
@@ -37,6 +38,20 @@ class Apple(GameObject):
   lanes = [93, 218, 343]
   self.x = choice(lanes)
   self.y = -64
+
+# Define Strawberry class
+class Strawberry(GameObject):
+  def __init__(self, image):
+    y = randint(0, 450) # Random y position
+    super(Strawberry, self).__init__(-64, y, image)
+    self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
+
+    def move(self):
+      self.x += self.dx
+      # Reset strawberry if it goes off screen
+      if self.x > 500:
+        self.x = -64 # Start off screen
+        self.y = randint(0, 450) # New random y position
 
 # Load the images
 apple_image = 'apple.png'
