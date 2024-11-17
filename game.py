@@ -23,7 +23,7 @@ class Apple(GameObject):
  def __init__(self):
    super(Apple, self).__init__(0, 0, 'apple.png')
    self.dx = 0
-   self.dy = (randint(0, 200) / 100) + 1
+   self.dy = (randint(0, 100) / 100) + 1
    self.reset() # call reset here! 
 
  def move(self):
