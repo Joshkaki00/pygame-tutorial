@@ -76,7 +76,7 @@ class Player(GameObject):
         self.current_animation = "idle"
 
         lanes = [93, 218, 343]
-        super(Player, self).__init__(lanes[1], lanes[1], self.frames["idle"][0])  # Start in the center
+        super().__init__(lanes[1], lanes[1], self.frames["idle"][0])  # Start in the center
         self.lanes_x = lanes
         self.lanes_y = lanes
         self.current_x_lane = 1
