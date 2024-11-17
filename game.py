@@ -130,18 +130,17 @@ while running:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       running = False
-    # Check for event type KEYBOARD
     elif event.type == pygame.KEYDOWN:
       if event.key == pygame.K_ESCAPE:
         running = False
       elif event.key == pygame.K_LEFT:
-        print('LEFT')
+        player.left()
       elif event.key == pygame.K_RIGHT:
-        print('RIGHT')
+        player.right()
       elif event.key == pygame.K_UP:
-        print('UP')
+        player.up()
       elif event.key == pygame.K_DOWN:
-        print('DOWN')
+        player.down()
 
   # Clear screen
   screen.fill((255, 255, 255))
