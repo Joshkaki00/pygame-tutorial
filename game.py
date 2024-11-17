@@ -164,7 +164,6 @@ while running:
     strawberry.render(screen)
 
   # Draw player 
-  player.move()
   player.render(screen)
 
   # Set the frame rate
