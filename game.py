@@ -80,32 +80,32 @@ class Player(GameObject):
       if self.pos_x > 0:  # Move left if not in the leftmost lane
         self.pos_x -= 1
       self.update_position()
-
+  
     def right(self):
       if self.pos_x < len(lanes) - 1:  # Move right if not in the rightmost lane
         self.pos_x += 1
       self.update_position()
-
+  
     def up(self):
       if self.pos_y > 0:  # Move up if not in the topmost lane
         self.pos_y -= 1
       self.update_position()
-
+  
     def down(self):
       if self.pos_y < len(lanes) - 1:  # Move down if not in the bottommost lane
         self.pos_y += 1
       self.update_position()
-
+  
     def move(self):
       self.rect.x -= (self.rect.x - self.dx) * 0.25
       self.rect.y -= (self.rect.y - self.dy) * 0.25
-
+  
     def reset(self):
       self.rect.x = lanes[self.pos_x]
       self.rect.y = lanes[self.pos_y]
       self.dx = self.rect.x
       self.dy = self.rect.y
-
+  
     def update_position(self):
       self.dx = lanes[self.pos_x]
       self.dy = lanes[self.pos_y]
