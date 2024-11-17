@@ -190,7 +190,8 @@ while running:
     strawberry.move()
     strawberry.render(screen)
 
-  # Draw player 
+  # Draw player
+  player.update_animation(clock.get_time() / 1000) 
   player.render(screen)
 
   # Set the frame rate
