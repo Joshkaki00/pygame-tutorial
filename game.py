@@ -82,6 +82,12 @@ class Player(GameObject):
     self.x -= (self.x - self.dx) * 0.25
     self.y -= (self.y - self.dy) * 0.25
 
+    # Keep player on screen
+    if self.x < 0:
+      self.x = 0
+    elif self.x > 500 - 64:
+      self.x = 500 - 64
+
   def reset(self):
     self.x = 250 - 32
     self.y = 250 - 32
