@@ -40,9 +40,9 @@ class Apple(GameObject):
 
 # Define Strawberry class
 class Strawberry(GameObject):
-  def __init__(self, image):
+  def __init__(self):
     y = randint(0, 450) # Random y position
-    super(Strawberry, self).__init__(-64, y, image)
+    super(Strawberry, self).__init__(-64, y, 'strawberry.png')
     self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
 
     def move(self):
@@ -57,8 +57,8 @@ apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
 # Create lists to hold apples and strawberries
-falling_apple = []
-moving_strawberry = []
+falling_apple = [Apple() for _ in range(3)]
+moving_strawberry = [Strawberry() for _ in range(2)]
 
 # Load moving apple image
 apple = Apple()
