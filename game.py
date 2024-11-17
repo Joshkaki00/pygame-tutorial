@@ -65,8 +65,8 @@ class Player(GameObject):
         lanes = [93, 218, 343]
         super(Player, self).__init__(lanes[1], lanes[1], 'player.png')  # Start in the center
         self.lanes = lanes
-        self.dx = self.x  # Target x position
-        self.dy = self.y  # Target y position
+        self.dx = self.rect.x  # Target x position
+        self.dy = self.rect.y  # Target y position
 
     def left(self):
         if self.x > self.lanes[0]:  # Check if not already in the leftmost lane
