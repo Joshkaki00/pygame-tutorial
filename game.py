@@ -65,6 +65,7 @@ class Player(GameObject):
         self.dy = self.rect.y  # Target y position
 
     def snap_to_lane(self):
+
         self.rect.x = min(self.lanes, key=lambda lane: abs(lane - self.rect.x))
         self.rect.y = min(self.lanes, key=lambda lane: abs(lane - self.rect.y))
 
@@ -142,7 +143,7 @@ while running:
   if sprites_to_move:
     sprites_to_move[current_sprite_index].move()
 
-      # Advance to the next sprite after each frame
+    # Advance to the next sprite after each frame
     current_sprite_index = (current_sprite_index + 1) % len(sprites_to_move)
 
   # Render all sprites
