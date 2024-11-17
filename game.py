@@ -9,20 +9,15 @@ screen = pygame.display.set_mode([500, 500])
 # Lanes
 lanes = [93, 218, 343]
 
-
 # Game Object
 class GameObject(pygame.sprite.Sprite):
-	def __init__(self, x, y, image):
-		super(GameObject, self).__init__()
-		self.surf = pygame.image.load(image).convert_alpha()
-		self.x = x
-		self.y = y
-		self.rect = self.surf.get_rect() # add 
+  def __init__(self, x, y, image):
+    super(GameObject, self).__init__()
+    self.surf = pygame.image.load(image).convert_alpha()
+    self.rect = self.surf.get_rect(topleft=(x, y))
 
-	def render(self, screen):
-		self.rect.x = self.x # add
-		self.rect.y = self.y # add
-		screen.blit(self.surf, (self.x, self.y))
+	def move(self):
+    pass
 
 # Define Apple class
 class Apple(GameObject):
@@ -32,13 +27,13 @@ class Apple(GameObject):
     self.reset()
 
   def move(self):
-    self.y += self.dy
-    if self.y > 500:  # Reset when off-screen
-        self.reset()
+    self.rect.y += self.dy
+    if self.rect.y > 500:  # Reset when off-screen
+      self.reset()
 
   def reset(self):
-    self.x = choice(lanes)
-    self.y = -64
+    self.rect.x = choice(lanes)
+    self.rect.y = -64
 
 # Define Strawberry class
 class Strawberry(GameObject):
@@ -48,13 +43,13 @@ class Strawberry(GameObject):
     self.reset()
 
   def move(self):
-    self.x += self.dx
-    if self.x > 500:  # Reset when off-screen
-        self.reset()
+    self.rect.x += self.dx
+    if self.rect.x > 500:  # Reset when off-screen
+      self.reset()
 
   def reset(self):
-    self.x = -64
-    self.y = choice(lanes)
+    self.rect.x = -64
+    self.rect.y = choice(lanes)
 
 # Define Bomb class
 class Bomb(GameObject):
@@ -64,13 +59,13 @@ class Bomb(GameObject):
     self.reset()
 
   def move(self):
-    self.x += self.dx
-    if self.x > 500:  # Reset when off-screen
-        self.reset()
+    self.rect.x += self.dx
+    if self.rect.x > 500:  # Reset when off-screen
+      self.reset()
 
   def reset(self):
-    self.x = -64
-    self.y = choice(lanes)
+    self.rect.x = -64
+    self.rect.y = choice(lanes)
 
 # Define Player class
 class Player(GameObject):
@@ -81,30 +76,29 @@ class Player(GameObject):
     self.reset()
 
   def left(self):
-    if self.pos_x > 0:  # Move left if not in the leftmost lane
+    if self.pos_x > 0:
       self.pos_x -= 1
     self.update_position()
 
   def right(self):
-    if self.pos_x < len(lanes) - 1:  # Move right if not in the rightmost lane
+    if self.pos_x < len(lanes) - 1:
       self.pos_x += 1
     self.update_position()
 
   def up(self):
-    if self.pos_y > 0:  # Move up if not in the topmost lane
+    if self.pos_y > 0:
       self.pos_y -= 1
     self.update_position()
 
   def down(self):
-    if self.pos_y < len(lanes) - 1:  # Move down if not in the bottommost lane
+    if self.pos_y < len(lanes) - 1:
       self.pos_y += 1
     self.update_position()
 
   def move(self):
-    self.x -= (self.x - self.dx) * 0.25
-    self.y -= (self.y - self.dy) * 0.25
+    self.rect.x -= (self.rect.x - self.dx) * 0.25
+    self.rect.y -= (self.rect.y - self.dy) * 0.25
 
-    # Snap to target when close enough
     if abs(self.rect.x - self.dx) < 1:
       self.rect.x = self.dx
     if abs(self.rect.y - self.dy) < 1:
