@@ -18,7 +18,7 @@ class GameObject(pygame.sprite.Sprite):
   def render(self, screen):
     screen.blit(self.surf, (self.x, self.y))
 
-#Define Apple class
+# Define Apple class
 class Apple(GameObject):
  def __init__(self):
    super(Apple, self).__init__(0, 0, 'apple.png')
@@ -51,7 +51,7 @@ class Strawberry(GameObject):
     if self.x > 500:
       self.x = -64 # Start off screen
       self.y = randint(0, 450) # New random y position
-      
+
   def reset(self):
     lanes = [93, 218, 343]
     self.y = choice(lanes)
