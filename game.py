@@ -55,21 +55,18 @@ class Strawberry(GameObject):
 # Define Bomb class
 class Bomb(GameObject):
   def __init__(self):
-    y = randint(0, 450) # Random y position
-    super(Bomb, self).__init__(-64, y, 'bomb.png')
-    self.dx = (randint(50, 150) / 100) + 1 # Random horizontal speed
+    super(Bomb, self).__init__(0, 0, 'bomb.png')
+    self.dx = (randint(0, 200) / 100) + 1
     self.reset()
 
   def move(self):
     self.rect.x += self.dx
-    # Reset strawberry if it goes off screen
-    if self.rect.x > screen_width:
-      self.reset()
+    if self.rect.x > 500:  # Reset when off-screen
+        self.reset()
 
   def reset(self):
-    lanes = [93, 218, 343]
-    self.rect.y = choice(lanes)
     self.rect.x = -64
+    self.rect.y = choice(lanes)
 
 # Define Player class
 class Player(GameObject):
