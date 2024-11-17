@@ -80,18 +80,18 @@ class Player(GameObject):
     self.x = self.lanes_x[self.current_x_lane]
 
   def up(self):
-    self.dy -= 100
+    if self.current_y_lane > 0:
+      self.current_y_lane -= 1
+    self.y = self.lanes_y[self.current_y_lane]
 
   def down(self):
-    self.dy += 100
+    if self.current_y_lane < len(self.lanes_y) - 1:
+      self.current_y_lane += 1
+    self.y = self.lanes_y[self.current_y_lane]
 
   def move(self):
     self.x -= (self.x - self.dx) * 0.25
     self.y -= (self.y - self.dy) * 0.25
-
-    # Keep player on screen
-    self.x = max(0, min(self.x, screen_width - self.surf.get_width()))
-    self.y = max(0, min(self.y, screen_height - self.surf.get_height()))
 
 # Make an instance of Player
 player = Player()
