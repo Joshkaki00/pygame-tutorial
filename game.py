@@ -79,11 +79,15 @@ class Player(GameObject):
     pass
 
   def move(self):
-    pass
+    self.x -= (self.x - self.dx) * 0.25
+    self.y -= (self.y - self.dy) * 0.25
 
   def reset(self):
     self.x = 250 - 32
     self.y = 250 - 32
+
+# Make an instance of Player
+player = Player()
 
 # Load the images
 apple_image = 'apple.png'
@@ -159,6 +163,10 @@ while running:
   # Draw apple
   apple.move()
   apple.render(screen)
+
+  # Draw player 
+  player.move()
+  player.render(screen)
 
   # Set the frame rate
   clock.tick(60)
