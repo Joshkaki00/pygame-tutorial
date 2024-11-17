@@ -104,7 +104,7 @@ class Player(GameObject):
 
   def move(self):
     self.x -= (self.x - self.dx) * 0.25
-    self.rect.y -= (self.y - self.dy) * 0.25
+    self.y -= (self.y - self.dy) * 0.25
 
     if abs(self.x - self.dx) < 1:
       self.x = self.dx
