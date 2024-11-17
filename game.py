@@ -59,7 +59,7 @@ class Strawberry(GameObject):
 class Bomb(GameObject):
   def __init__(self):
     y = randint(0, 450) # Random y position
-    super(Strawberry, self).__init__(-64, y, 'bomb.png')
+    super(Bomb, self).__init__(-64, y, 'bomb.png')
     self.dx = (randint(50, 150) / 100) + 1 # Random horizontal speed
     self.reset()
 
