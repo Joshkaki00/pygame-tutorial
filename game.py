@@ -103,19 +103,19 @@ class Player(GameObject):
     self.update_position()
 
   def move(self):
-    self.rect.x -= (self.rect.x - self.dx) * 0.25
-    self.rect.y -= (self.rect.y - self.dy) * 0.25
+    self.x -= (self.x - self.dx) * 0.25
+    self.rect.y -= (self.y - self.dy) * 0.25
 
-    if abs(self.rect.x - self.dx) < 1:
-      self.rect.x = self.dx
-    if abs(self.rect.y - self.dy) < 1:
-      self.rect.y = self.dy
+    if abs(self.x - self.dx) < 1:
+      self.x = self.dx
+    if abs(self.y - self.dy) < 1:
+      self.y = self.dy
 
   def reset(self):
-    self.rect.x = lanes[self.pos_x]
-    self.rect.y = lanes[self.pos_y]
-    self.dx = self.rect.x
-    self.dy = self.rect.y
+    self.x = lanes[self.pos_x]
+    self.y = lanes[self.pos_y]
+    self.dx = self.x
+    self.dy = self.y
 
   def update_position(self):
     self.dx = lanes[self.pos_x]
