@@ -117,18 +117,13 @@ total_height = (grid_size - 1) * spacing + 64
 start_x = (screen_width - total_width) / 2
 start_y = (screen_height - total_height) / 2
 
-# List to hold all GameObjects on grid
-objects = []
-
 # Create a 3x3 grid of GameObjects
-for row in range(3):
-  for col in range(3):
-    # Alternate between apple and strawberry
-    image = apple_image if (row + col) % 2 == 0 else strawberry_image
-    x = start_x + col * spacing
-    y = start_y + row * spacing
-    obj = GameObject(x, y, image)
-    objects.append(obj)
+objects = [
+    GameObject(start_x + col * spacing, start_y + row * spacing,
+               'apple.png' if (row + col) % 2 == 0 else 'strawberry.png')
+    for row in range(grid_size)
+    for col in range(grid_size)
+]
     
 # Get the clock
 clock = pygame.time.Clock()
