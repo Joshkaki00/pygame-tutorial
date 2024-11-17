@@ -86,7 +86,7 @@ class Player(GameObject):
 
     def move(self):
         # Smoothly move the player to the target position using an easing function
-        self.rect.x -= (self.x - self.dx) * 0.25
+        self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.y -= (self.rect.y - self.dy) * 0.25
 
