@@ -21,14 +21,14 @@ class GameObject(pygame.sprite.Sprite):
 class Apple(GameObject):
  def __init__(self):
    super(Apple, self).__init__(0, 0, 'apple.png')
-   self.dy = (randint(0, 100) / 100) + 1
+   self.dy = (randint(20, 100) / 100) + 1
    self.reset() # call reset here! 
 
  def move(self):
    self.rect.y += self.dy
    # Check the y position of the apple
    if self.rect.y > screen_height: 
-     self.reset()
+    self.reset()
 
  # add a new method
  def reset(self):
@@ -41,7 +41,7 @@ class Strawberry(GameObject):
   def __init__(self):
     y = randint(0, 450) # Random y position
     super(Strawberry, self).__init__(-64, y, 'strawberry.png')
-    self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
+    self.dx = (randint(50, 150) / 100) + 1 # Random horizontal speed
     self.reset()
 
   def move(self):
