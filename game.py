@@ -105,10 +105,10 @@ class Player(GameObject):
     self.y -= (self.y - self.dy) * 0.25
 
   def reset(self):
-    self.x = lanes[self.pos_x]
-    self.y = lanes[self.pos_y]
-    self.dx = self.x
-    self.dy = self.y
+    self.rect.x = lanes[self.pos_x]
+    self.rect.y = lanes[self.pos_y]
+    self.dx = self.rect.x
+    self.dy = self.rect.y
 
   def update_position(self):
     self.dx = lanes[self.pos_x]
