@@ -69,8 +69,8 @@ class Bomb(GameObject):
         self.reset()
 
   def reset(self):
-    self.rect.x = -64
-    self.rect.y = choice(lanes)
+    self.x = -64
+    self.y = choice(lanes)
 
 # Define Player class
 class Player(GameObject):
