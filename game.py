@@ -85,17 +85,15 @@ class Player(GameObject):
             self.dy = 125  # Move down by 125 pixels
 
     def move(self):
-        # Update position based on dx and dy
-        self.x += self.dx
-        self.y += self.dy
+        # Smoothly move the player to the target position using an easing function
+        self.x -= (self.x - self.dx) * 0.25
+        self.y -= (self.y - self.dy) * 0.25
 
-        # Snap to the closest lane (avoid going out of bounds)
-        self.x = max(min(self.x, self.lanes[-1]), self.lanes[0])
-        self.y = max(min(self.y, self.lanes[-1]), self.lanes[0])
-
-        # Reset dx and dy after the move to avoid continuous movement
-        self.dx = 0
-        self.dy = 0
+        # Snap to target position when close enough
+        if abs(self.x - self.dx) < 1:
+            self.x = self.dx
+        if abs(self.y - self.dy) < 1:
+            self.y = self.dy
 
 # Make an instance of Player
 player = Player()
