@@ -42,13 +42,13 @@ class Strawberry(GameObject):
     y = randint(0, 450) # Random y position
     super(Strawberry, self).__init__(-64, y, 'strawberry.png')
     self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
+    self.reset()
 
   def move(self):
     self.rect.x += self.dx
     # Reset strawberry if it goes off screen
     if self.rect.x > screen_width:
-      self.rect.x = -64 # Start off screen
-      self.rect.y = randint(0, 450) # New random y position
+      self.reset()
 
   def reset(self):
     lanes = [93, 218, 343]
@@ -64,32 +64,39 @@ class Player(GameObject):
         self.dx = self.rect.x  # Target x position
         self.dy = self.rect.y  # Target y position
 
+    def snap_to_lane(self):
+        self.rect.x = min(self.lanes, key=lambda lane: abs(lane - self.rect.x))
+        self.rect.y = min(self.lanes, key=lambda lane: abs(lane - self.rect.y))
+
     def left(self):
+        self.snap_to_lane()
         if self.rect.x > self.lanes[0]:  # Check if not already in the leftmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) - 1]  # Set target to the previous lane
 
     def right(self):
+        self.snap_to_lane()
         if self.rect.x < self.lanes[-1]:  # Check if not already in the rightmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) + 1]  # Set target to the next lane
 
     def up(self):
+        self.snap_to_lane()
         if self.rect.y > self.lanes[0]:  # Check if not already in the topmost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) - 1]  # Set target to the previous lane
 
     def down(self):
+        self.snap_to_lane()
         if self.rect.y < self.lanes[-1]:  # Check if not already in the bottommost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) + 1]  # Set target to the next lane
 
     def move(self):
-        # Smoothly move the player to the target position using an easing function
         self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.y -= (self.rect.y - self.dy) * 0.25
 
-        # Snap to target position when close enough
         if abs(self.rect.x - self.dx) < 1:
-          self.rect.x = self.dx
+            self.rect.x = self.dx
         if abs(self.rect.y - self.dy) < 1:
-          self.rect.y = self.dy
+            self.rect.y = self.dy
+
 
 # Make instances of sprites
 player = Player()
