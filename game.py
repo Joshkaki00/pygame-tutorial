@@ -93,12 +93,23 @@ for row in range(3):
 clock = pygame.time.Clock()
 
 # Create the game loop
-running = True
 while running:
   # Looks at events
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       running = False
+    # Check for event type KEYBOARD
+    elif event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_ESCAPE:
+        running = False
+      elif event.key == pygame.K_LEFT:
+        print('LEFT')
+      elif event.key == pygame.K_RIGHT:
+        print('RIGHT')
+      elif event.key == pygame.K_UP:
+        print('UP')
+      elif event.key == pygame.K_DOWN:
+        print('DOWN')
 
   # Clear screen
   screen.fill((255, 255, 255))
