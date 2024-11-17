@@ -81,6 +81,10 @@ class Bomb(GameObject):
   def reset(self):
     self.x = -64
     self.y = choice(lanes)
+    self.dx = (randint(20, 50) / 100) + 1
+
+  def increase_speed(self):
+    self.dx += 0.1
 
 # Define Player class
 class Player(GameObject):
