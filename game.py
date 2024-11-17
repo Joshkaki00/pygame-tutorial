@@ -64,55 +64,43 @@ class Player(GameObject):
         self.dx = self.rect.x  # Target x position
         self.dy = self.rect.y  # Target y position
 
-    def snap_to_lane(self):
-
-        self.rect.x = min(self.lanes, key=lambda lane: abs(lane - self.rect.x))
-        self.rect.y = min(self.lanes, key=lambda lane: abs(lane - self.rect.y))
-
     def left(self):
-        self.snap_to_lane()
         if self.rect.x > self.lanes[0]:  # Check if not already in the leftmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) - 1]  # Set target to the previous lane
 
     def right(self):
-        self.snap_to_lane()
         if self.rect.x < self.lanes[-1]:  # Check if not already in the rightmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) + 1]  # Set target to the next lane
 
     def up(self):
-        self.snap_to_lane()
         if self.rect.y > self.lanes[0]:  # Check if not already in the topmost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) - 1]  # Set target to the previous lane
 
     def down(self):
-        self.snap_to_lane()
         if self.rect.y < self.lanes[-1]:  # Check if not already in the bottommost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) + 1]  # Set target to the next lane
 
     def move(self):
+        # Smoothly move the player to the target position using an easing function
         self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.y -= (self.rect.y - self.dy) * 0.25
 
+        # Snap to target position when close enough
         if abs(self.rect.x - self.dx) < 1:
-            self.rect.x = self.dx
+          self.rect.x = self.dx
         if abs(self.rect.y - self.dy) < 1:
-            self.rect.y = self.dy
-
+          self.rect.y = self.dy
 
 # Make instances of sprites
 player = Player()
-falling_apples = [Apple() for _ in range(3)]
-moving_strawberries = [Strawberry() for _ in range(2)]
+falling_apple = [Apple() for _ in range(3)]
+moving_strawberry = [Strawberry() for _ in range(2)]
 
 # Make a group
 all_sprites = pygame.sprite.Group()
 
 # Add sprites to group
-all_sprites.add(player, *falling_apples, *moving_strawberries)
-
-# Sequential movement logic
-sprites_to_move = falling_apples + moving_strawberries
-current_sprite_index = 0  # Start with the first sprite
+all_sprites.add(player, *falling_apple, *moving_strawberry)
  
 # Get the clock
 clock = pygame.time.Clock()
@@ -139,12 +127,9 @@ while running:
   # Clear screen
   screen.fill((255, 255, 255))
 
-  # Move the current sprite
-  if sprites_to_move:
-    sprites_to_move[current_sprite_index].move()
-
-    # Advance to the next sprite after each frame
-    current_sprite_index = (current_sprite_index + 1) % len(sprites_to_move)
+  # Move and render all sprites
+  for entity in all_sprites:
+     entity.move()
 
   # Render all sprites
   all_sprites.draw(screen)
