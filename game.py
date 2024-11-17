@@ -56,6 +56,10 @@ class Strawberry(GameObject):
 apple_image = 'apple.png'
 strawberry_image = 'strawberry.png'
 
+# Create lists to hold apples and strawberries
+falling_apple = []
+moving_strawberry = []
+
 # Load moving apple image
 apple = Apple()
 
