@@ -121,12 +121,13 @@ class Player(GameObject):
 player = Player()
 falling_apples = [Apple() for _ in range(3)]
 moving_strawberries = [Strawberry() for _ in range(2)]
+moving_bomb = [Bomb() for _ in range(1)]
 
 # Make a group
 all_sprites = pygame.sprite.Group()
 
 # Add sprites to group
-all_sprites.add(player, *falling_apples, *moving_strawberries)
+all_sprites.add(player, *falling_apples, *moving_strawberries, *moving_bomb)
  
 # Get the clock
 clock = pygame.time.Clock()
