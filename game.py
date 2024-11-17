@@ -69,35 +69,29 @@ class Player(GameObject):
         self.dy = 0
 
     def left(self):
-        # Move left only if not in the first lane
-        if self.lanes.index(self.x) > 0:
-            self.dx -= 100
+        if self.x > self.lanes[0]:  # Check if not already in the leftmost lane
+            self.dx = -125  # Move left by 125 pixels
 
     def right(self):
-        # Move right only if not in the last lane
-        if self.lanes.index(self.x) < len(self.lanes) - 1:
-            self.dx += 100
+        if self.x < self.lanes[-1]:  # Check if not already in the rightmost lane
+            self.dx = 125  # Move right by 125 pixels
 
     def up(self):
-        # Move up only if not in the first lane
-        if self.lanes.index(self.y) > 0:
-            self.dy -= 100
+        if self.y > self.lanes[0]:  # Check if not already in the topmost lane
+            self.dy = -125  # Move up by 125 pixels
 
     def down(self):
-        # Move down only if not in the last lane
-        if self.lanes.index(self.y) < len(self.lanes) - 1:
-            self.dy += 100
+        if self.y < self.lanes[-1]:  # Check if not already in the bottommost lane
+            self.dy = 125  # Move down by 125 pixels
 
     def move(self):
         # Update position based on dx and dy
-        new_x = self.x + self.dx
-        new_y = self.y + self.dy
+        self.x += self.dx
+        self.y += self.dy
 
-        # Snap to the closest lane
-        if new_x in self.lanes:
-            self.x = new_x
-        if new_y in self.lanes:
-            self.y = new_y
+        # Snap to the closest lane (avoid going out of bounds)
+        self.x = max(min(self.x, self.lanes[-1]), self.lanes[0])
+        self.y = max(min(self.y, self.lanes[-1]), self.lanes[0])
 
         # Reset dx and dy after the move to avoid continuous movement
         self.dx = 0
