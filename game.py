@@ -14,7 +14,7 @@ lanes = [93, 218, 343]
 class GameObject(pygame.sprite.Sprite):
 	def __init__(self, x, y, image):
 		super(GameObject, self).__init__()
-		self.surf = pygame.image.load(image)
+		self.surf = pygame.image.load(image).convert_alpha()
 		self.x = x
 		self.y = y
 		self.rect = self.surf.get_rect() # add 
@@ -103,6 +103,12 @@ class Player(GameObject):
   def move(self):
     self.x -= (self.x - self.dx) * 0.25
     self.y -= (self.y - self.dy) * 0.25
+
+    # Snap to target when close enough
+    if abs(self.rect.x - self.dx) < 1:
+      self.rect.x = self.dx
+    if abs(self.rect.y - self.dy) < 1:
+      self.rect.y = self.dy
 
   def reset(self):
     self.rect.x = lanes[self.pos_x]
