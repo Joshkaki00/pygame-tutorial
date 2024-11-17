@@ -44,7 +44,7 @@ class Apple(GameObject):
     self.dy = (randint(20, 50) / 100) + 1
 
   def increase_speed(self):
-    self.dy += 0.1
+    self.dy += 1
 
 # Define Strawberry class
 class Strawberry(GameObject):
@@ -64,7 +64,7 @@ class Strawberry(GameObject):
     self.dx = (randint(20, 50) / 100) + 1
 
   def increase_speed(self):
-    self.dx += 0.1
+    self.dx += 1
 
 # Define Bomb class
 class Bomb(GameObject):
@@ -84,7 +84,7 @@ class Bomb(GameObject):
     self.dx = (randint(20, 50) / 100) + 1
 
   def increase_speed(self):
-    self.dx += 0.1
+    self.dx += 1
 
 # Define Player class
 class Player(GameObject):
