@@ -12,7 +12,7 @@ screen = pygame.display.set_mode([screen_width, screen_height])
 class GameObject(pygame.sprite.Sprite):
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
-    self.surf = pygame.image.load(image).convert_alpha() # ADD!
+    self.surf = pygame.image.load(image).convert_alpha()
     self.x = x
     self.y = y
 
