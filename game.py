@@ -159,7 +159,7 @@ while running:
   # Move and render all sprites
   for entity in all_sprites:
     entity.move()
-    screen.blit(entity.surf, entity.rect.topleft)
+    entity.render(screen)
 
   # Set the frame rate
   clock.tick(60)
