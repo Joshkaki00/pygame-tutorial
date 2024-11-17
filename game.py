@@ -135,7 +135,9 @@ while running:
   # Move and render all sprites
   for entity in all_sprites:
      entity.move()
-     entity.render(screen)
+
+  # Draw all sprites
+  all_sprites.draw(screen)
 
   # Set the frame rate
   clock.tick(60)
