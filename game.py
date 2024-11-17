@@ -1,11 +1,14 @@
 # Import and initialize pygame
 import pygame
-pygame.init()
 from random import randint, choice
+pygame.init()
 
 # Configure the screen
-screen_width, screen_height = 500, 500
-screen = pygame.display.set_mode([screen_width, screen_height])
+screen = pygame.display.set_mode([500, 500])
+
+# Lanes
+lanes = [93, 218, 343]
+
 
 # Define GameObject class
 class GameObject(pygame.sprite.Sprite):
