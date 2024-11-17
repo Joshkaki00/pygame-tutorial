@@ -4,7 +4,8 @@ pygame.init()
 from random import randint, choice
 
 # Configure the screen
-screen = pygame.display.set_mode([500, 500])
+screen_width, screen_height = 500, 500
+screen = pygame.display.set_mode([screen_width, screen_height])
 
 # Define GameObject class
 # Game Object
@@ -29,7 +30,7 @@ class Apple(GameObject):
  def move(self):
    self.y += self.dy
    # Check the y position of the apple
-   if self.y > 500: 
+   if self.y > screen_height: 
      self.reset()
 
  # add a new method
@@ -48,7 +49,7 @@ class Strawberry(GameObject):
   def move(self):
     self.x += self.dx
     # Reset strawberry if it goes off screen
-    if self.x > 500:
+    if self.x > screen_width:
       self.x = -64 # Start off screen
       self.y = randint(0, 450) # New random y position
 
@@ -61,9 +62,9 @@ class Strawberry(GameObject):
 # Define Player class
 class Player(GameObject):
   def __init__(self):
-    super(Player, self).__init__(0, 0, 'player.png')
-    self.dx = 0
-    self.dy = 0
+    super(Player, self).__init__(screen_width // 2 - 32, screen_height // 2 - 32, 'player.png')
+    self.dx = self.x
+    self.dy = self.y
     self.reset()
 
   def left(self):
@@ -83,19 +84,8 @@ class Player(GameObject):
     self.y -= (self.y - self.dy) * 0.25
 
     # Keep player on screen
-    if self.x < 0:
-      self.x = 0
-    elif self.x > 500 - self.surf.get_width():
-      self.x = 500 - self.surf.get_width()
-    
-    if self.y < 0:
-      self.y = 0
-    elif self.y > 500 - self.surf.get_height():
-      self.y = 500 - self.surf.get_height()
-
-  def reset(self):
-    self.x = 250 - 32
-    self.y = 250 - 32
+    self.x = max(0, min(self.x, screen_width - self.surf.get_width()))
+    self.y = max(0, min(self.y, screen_height - self.surf.get_height()))
 
 # Make an instance of Player
 player = Player()
@@ -116,8 +106,8 @@ grid_size = 3
 spacing = 64 + 75 # 64 pixels for image size, 100 pixels for spacing
 total_width = (grid_size * 64) + ((grid_size - 1) * 75)
 total_height = (grid_size * 64) + ((grid_size - 1) * 75)
-start_x = (500 - total_width) / 2
-start_y = (500 - total_height) / 2
+start_x = (screen_width - total_width) / 2
+start_y = (screen_height - total_height) / 2
 
 # List to hold all GameObjects on grid
 objects = []
