@@ -100,14 +100,18 @@ class Player(GameObject):
 
 # Make instances of sprites
 player = Player()
-falling_apple = [Apple() for _ in range(3)]
-moving_strawberry = [Strawberry() for _ in range(2)]
+falling_apples = [Apple() for _ in range(3)]
+moving_strawberries = [Strawberry() for _ in range(2)]
 
 # Make a group
 all_sprites = pygame.sprite.Group()
 
 # Add sprites to group
-all_sprites.add(player, *falling_apple, *moving_strawberry)
+all_sprites.add(player, *falling_apples, *moving_strawberries)
+
+# Sequential movement logic
+sprites_to_move = falling_apples + moving_strawberries
+current_sprite_index = 0  # Start with the first sprite
  
 # Get the clock
 clock = pygame.time.Clock()
@@ -134,9 +138,12 @@ while running:
   # Clear screen
   screen.fill((255, 255, 255))
 
-  # Move and render all sprites
-  for entity in all_sprites:
-     entity.move()
+  # Move the current sprite
+  if sprites_to_move:
+    sprites_to_move[current_sprite_index].move()
+
+      # Advance to the next sprite after each frame
+    current_sprite_index = (current_sprite_index + 1) % len(sprites_to_move)
 
   # Render all sprites
   all_sprites.draw(screen)
