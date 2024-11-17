@@ -65,24 +65,24 @@ class Player(GameObject):
         lanes = [93, 218, 343]
         super(Player, self).__init__(lanes[1], lanes[1], 'player.png')  # Start in the center
         self.lanes = lanes
-        self.dx = 0
-        self.dy = 0
+        self.dx = self.x  # Target x position
+        self.dy = self.y  # Target y position
 
     def left(self):
         if self.x > self.lanes[0]:  # Check if not already in the leftmost lane
-            self.dx = -125  # Move left by 125 pixels
+            self.dx = self.lanes[self.lanes.index(self.x) - 1]  # Set target to the previous lane
 
     def right(self):
         if self.x < self.lanes[-1]:  # Check if not already in the rightmost lane
-            self.dx = 125  # Move right by 125 pixels
+            self.dx = self.lanes[self.lanes.index(self.x) + 1]  # Set target to the next lane
 
     def up(self):
         if self.y > self.lanes[0]:  # Check if not already in the topmost lane
-            self.dy = -125  # Move up by 125 pixels
+            self.dy = self.lanes[self.lanes.index(self.y) - 1]  # Set target to the previous lane
 
     def down(self):
         if self.y < self.lanes[-1]:  # Check if not already in the bottommost lane
-            self.dy = 125  # Move down by 125 pixels
+            self.dy = self.lanes[self.lanes.index(self.y) + 1]  # Set target to the next lane
 
     def move(self):
         # Smoothly move the player to the target position using an easing function
@@ -94,6 +94,7 @@ class Player(GameObject):
             self.x = self.dx
         if abs(self.y - self.dy) < 1:
             self.y = self.dy
+
 
 # Make an instance of Player
 player = Player()
