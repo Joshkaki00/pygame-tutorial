@@ -8,21 +8,19 @@ screen_width, screen_height = 500, 500
 screen = pygame.display.set_mode([screen_width, screen_height])
 
 # Define GameObject class
-# Game Object
 class GameObject(pygame.sprite.Sprite):
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
-    self.surf = pygame.image.load(image).convert_alpha()
+    self.image = pygame.image.load(image).convert_alpha()
     self.rect = self.surf.get_rect(topleft=(x, y))
 
-  def render(self, screen):
-    screen.blit(self.surf, self.rect.topleft)
+  def move(self):
+     pass
 
 # Define Apple class
 class Apple(GameObject):
  def __init__(self):
    super(Apple, self).__init__(0, 0, 'apple.png')
-   self.dx = 0
    self.dy = (randint(0, 100) / 100) + 1
    self.reset() # call reset here! 
 
