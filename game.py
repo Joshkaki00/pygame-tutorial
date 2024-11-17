@@ -47,16 +47,16 @@ class Strawberry(GameObject):
     self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
 
   def move(self):
-    self.x += self.dx
+    self.rect.x += self.dx
     # Reset strawberry if it goes off screen
-    if self.x > screen_width:
-      self.x = -64 # Start off screen
-      self.y = randint(0, 450) # New random y position
+    if self.rect.x > screen_width:
+      self.rect.x = -64 # Start off screen
+      self.rect.y = randint(0, 450) # New random y position
 
   def reset(self):
     lanes = [93, 218, 343]
-    self.y = choice(lanes)
-    self.x = -64
+    self.rect.y = choice(lanes)
+    self.rect.x = -64
 
 
 # Define Player class
@@ -69,7 +69,7 @@ class Player(GameObject):
         self.dy = self.rect.y  # Target y position
 
     def left(self):
-        if self.x > self.lanes[0]:  # Check if not already in the leftmost lane
+        if self.rect.x > self.lanes[0]:  # Check if not already in the leftmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) - 1]  # Set target to the previous lane
 
     def right(self):
