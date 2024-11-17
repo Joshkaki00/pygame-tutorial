@@ -96,8 +96,10 @@ class Player(GameObject):
             self.y = self.dy
 
 
-# Make an instance of Player
+# Make instances of sprites
 player = Player()
+falling_apple = [Apple() for _ in range(3)]
+moving_strawberry = [Strawberry() for _ in range(2)]
 
 # Load the images
 apple_image = 'apple.png'
