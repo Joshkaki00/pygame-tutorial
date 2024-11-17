@@ -89,7 +89,6 @@ class Player(GameObject):
       self.current_y_lane += 1
     self.y = self.lanes_y[self.current_y_lane]
 
-
 # Make an instance of Player
 player = Player()
 
