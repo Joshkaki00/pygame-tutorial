@@ -85,15 +85,13 @@ class Player(GameObject):
     def move(self):
         # Smoothly move the player to the target position using an easing function
         self.rect.x -= (self.rect.x - self.dx) * 0.25
-        self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.y -= (self.rect.y - self.dy) * 0.25
 
         # Snap to target position when close enough
         if abs(self.rect.x - self.dx) < 1:
-            self.rect.x = self.dx
+          self.rect.x = self.dx
         if abs(self.rect.y - self.dy) < 1:
-            if (self.rect.y - self.dy) < 1:
-               self.rect.y = self.dy
+          self.rect.y = self.dy
 
 # Make instances of sprites
 player = Player()
@@ -137,7 +135,7 @@ while running:
 
   # Render all sprites
   all_sprites.draw(screen)
-  
+
   # Set the frame rate
   clock.tick(60)
 
