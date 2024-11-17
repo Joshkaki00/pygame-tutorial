@@ -17,7 +17,6 @@ class GameObject(pygame.sprite.Sprite):
 
   def render(self, screen):
     screen.blit(self.surf, self.rect.topleft)
-    screen.blit(self.surf, self.rect.topleft)
 
 # Define Apple class
 class Apple(GameObject):
@@ -57,7 +56,6 @@ class Strawberry(GameObject):
     lanes = [93, 218, 343]
     self.rect.y = choice(lanes)
     self.rect.x = -64
-
 
 # Define Player class
 class Player(GameObject):
@@ -139,7 +137,7 @@ while running:
 
   # Render all sprites
   all_sprites.draw(screen)
-
+  
   # Set the frame rate
   clock.tick(60)
 
