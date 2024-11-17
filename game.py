@@ -16,7 +16,7 @@ class GameObject(pygame.sprite.Sprite):
     self.rect = self.surf.get_rect(topleft=(x, y))
 
   def render(self, screen):
-    screen.blit(self.surf, (self.x, self.y))
+    screen.blit(self.surf, self.rect.topleft)
     screen.blit(self.surf, self.rect.topleft)
 
 # Define Apple class
@@ -28,16 +28,16 @@ class Apple(GameObject):
    self.reset() # call reset here! 
 
  def move(self):
-   self.y += self.dy
+   self.rect.y += self.dy
    # Check the y position of the apple
-   if self.y > screen_height: 
+   if self.rect.y > screen_height: 
      self.reset()
 
  # add a new method
  def reset(self):
   lanes = [93, 218, 343]
-  self.x = choice(lanes)
-  self.y = -64
+  self.rect.x = choice(lanes)
+  self.rect.y = -64
 
 # Define Strawberry class
 class Strawberry(GameObject):
