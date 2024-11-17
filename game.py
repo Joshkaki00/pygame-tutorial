@@ -105,10 +105,8 @@ moving_strawberry = [Strawberry() for _ in range(2)]
 all_sprites = pygame.sprite.Group()
 
 # Add sprites to group
-all_sprites.add(player)
-all_sprites.add(*falling_apple)
-all_sprites.add(*moving_strawberry)
-    
+all_sprites.add(player, *falling_apple, *moving_strawberry)
+ 
 # Get the clock
 clock = pygame.time.Clock()
 
