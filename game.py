@@ -51,6 +51,11 @@ class Strawberry(GameObject):
     if self.x > 500:
       self.x = -64 # Start off screen
       self.y = randint(0, 450) # New random y position
+      
+  def reset(self):
+    lanes = [93, 218, 343]
+    self.y = choice(lanes)
+    self.x = -64
 
 # Load the images
 apple_image = 'apple.png'
