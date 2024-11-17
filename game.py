@@ -62,16 +62,21 @@ class Strawberry(GameObject):
 # Define Player class
 class Player(GameObject):
   def __init__(self):
-    super(Player, self).__init__(screen_width // 2 - 32, screen_height // 2 - 32, 'player.png')
-    self.dx = self.x
-    self.dy = self.y
-    self.reset()
+    lanes = [93, 218, 343]
+    super(Player, self).__init__(lanes[1], lanes[1], 'player.png')
+    self.lanes_x = lanes
+    self.lanes_y = lanes
+    self.current_x_lane = 1 # Start in the center lane for x
+    self.current_y_lane = 1 # Start in the center lane for y
 
   def left(self):
-    self.dx -= 100
+    if self.current_x_lane > 0:
+      self.current_x_lane -= 1
+      self.x = self.lanes_x[self.current_x_lane]
 
   def right(self):
-    self.dx += 100
+    if self.current_x_lane < len(self.lanes_x) - 1:
+      self.current_x_lane += 1
 
   def up(self):
     self.dy -= 100
