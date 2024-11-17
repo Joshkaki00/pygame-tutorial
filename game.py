@@ -22,22 +22,19 @@ class GameObject(pygame.sprite.Sprite):
 
 # Define Apple class
 class Apple(GameObject):
- def __init__(self):
-   super(Apple, self).__init__(0, 0, 'apple.png')
-   self.dy = (randint(20, 100) / 100) + 1
-   self.reset() # call reset here! 
-
- def move(self):
-   self.rect.y += self.dy
-   # Check the y position of the apple
-   if self.rect.y > screen_height: 
+  def __init__(self):
+    super(Apple, self).__init__(0, 0, 'apple.png')
+    self.dy = (randint(0, 200) / 100) + 1
     self.reset()
 
- # add a new method
- def reset(self):
-  lanes = [93, 218, 343]
-  self.rect.x = choice(lanes)
-  self.rect.y = -64
+  def move(self):
+    self.rect.y += self.dy
+    if self.rect.y > 500:  # Reset when off-screen
+        self.reset()
+
+  def reset(self):
+    self.rect.x = choice(lanes)
+    self.rect.y = -64
 
 # Define Strawberry class
 class Strawberry(GameObject):
