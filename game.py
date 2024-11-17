@@ -70,45 +70,45 @@ class Bomb(GameObject):
 
 # Define Player class
 class Player(GameObject):
-    def __init__(self):
-        lanes = [93, 218, 343]
-        super(Player, self).__init__(lanes[1], lanes[1], 'player.png')  # Start in the center
-        self.lanes = lanes
-        self.dx = self.rect.x  # Target x position
-        self.dy = self.rect.y  # Target y position
-
-    def snap_to_lane(self):
-        self.rect.x = min(self.lanes, key=lambda lane: abs(lane - self.rect.x))
-        self.rect.y = min(self.lanes, key=lambda lane: abs(lane - self.rect.y))
+  def __init__(self):
+    super(Player, self).__init__(0, 0, 'player.png')
+    self.pos_x = 1
+    self.pos_y = 1
+    self.reset()
 
     def left(self):
-        self.snap_to_lane()
-        if self.rect.x > self.lanes[0]:  # Check if not already in the leftmost lane
-            self.dx = self.lanes[self.lanes.index(self.rect.x) - 1]  # Set target to the previous lane
+      if self.pos_x > 0:  # Move left if not in the leftmost lane
+        self.pos_x -= 1
+      self.update_position()
 
     def right(self):
-        self.snap_to_lane()
-        if self.rect.x < self.lanes[-1]:  # Check if not already in the rightmost lane
-            self.dx = self.lanes[self.lanes.index(self.rect.x) + 1]  # Set target to the next lane
+      if self.pos_x < len(lanes) - 1:  # Move right if not in the rightmost lane
+        self.pos_x += 1
+      self.update_position()
 
     def up(self):
-        self.snap_to_lane()
-        if self.rect.y > self.lanes[0]:  # Check if not already in the topmost lane
-            self.dy = self.lanes[self.lanes.index(self.rect.y) - 1]  # Set target to the previous lane
+      if self.pos_y > 0:  # Move up if not in the topmost lane
+        self.pos_y -= 1
+      self.update_position()
 
     def down(self):
-        self.snap_to_lane()
-        if self.rect.y < self.lanes[-1]:  # Check if not already in the bottommost lane
-            self.dy = self.lanes[self.lanes.index(self.rect.y) + 1]  # Set target to the next lane
+      if self.pos_y < len(lanes) - 1:  # Move down if not in the bottommost lane
+        self.pos_y += 1
+      self.update_position()
 
     def move(self):
-        self.rect.x -= (self.rect.x - self.dx) * 0.25
-        self.rect.y -= (self.rect.y - self.dy) * 0.25
+      self.rect.x -= (self.rect.x - self.dx) * 0.25
+      self.rect.y -= (self.rect.y - self.dy) * 0.25
 
-        if abs(self.rect.x - self.dx) < 1:
-            self.rect.x = self.dx
-        if abs(self.rect.y - self.dy) < 1:
-            self.rect.y = self.dy
+    def reset(self):
+      self.rect.x = lanes[self.pos_x]
+      self.rect.y = lanes[self.pos_y]
+      self.dx = self.rect.x
+      self.dy = self.rect.y
+
+    def update_position(self):
+      self.dx = lanes[self.pos_x]
+      self.dy = lanes[self.pos_y]
 
 
 # Make instances of sprites
