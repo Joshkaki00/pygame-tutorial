@@ -13,11 +13,11 @@ class GameObject(pygame.sprite.Sprite):
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
     self.surf = pygame.image.load(image).convert_alpha()
-    self.x = x
-    self.y = y
+    self.rect = self.surf.get_rect(topleft=(x, y))
 
   def render(self, screen):
     screen.blit(self.surf, (self.x, self.y))
+    screen.blit(self.surf, self.rect.topleft)
 
 # Define Apple class
 class Apple(GameObject):
