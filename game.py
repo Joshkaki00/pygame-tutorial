@@ -10,15 +10,15 @@ screen = pygame.display.set_mode([500, 500])
 lanes = [93, 218, 343]
 
 
-# Define GameObject class
+# GameObject Class
 class GameObject(pygame.sprite.Sprite):
   def __init__(self, x, y, image):
     super(GameObject, self).__init__()
-    self.image = pygame.image.load(image).convert_alpha()
-    self.rect = self.image.get_rect(topleft=(x, y))
+    self.surf = pygame.image.load(image).convert_alpha()
+    self.rect = self.surf.get_rect(topleft=(x, y))
 
   def move(self):
-     pass
+    pass
 
 # Define Apple class
 class Apple(GameObject):
