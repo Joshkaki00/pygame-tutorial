@@ -34,13 +34,13 @@ class Apple(GameObject):
     self.reset()
 
   def move(self):
-    self.rect.y += self.dy
-    if self.rect.y > 500:  # Reset when off-screen
+    self.y += self.dy
+    if self.y > 500:  # Reset when off-screen
       self.reset()
 
   def reset(self):
-    self.rect.x = choice(lanes)
-    self.rect.y = -64
+    self.x = choice(lanes)
+    self.y = -64
 
 # Define Strawberry class
 class Strawberry(GameObject):
@@ -50,13 +50,13 @@ class Strawberry(GameObject):
     self.reset()
 
   def move(self):
-    self.rect.x += self.dx
-    if self.rect.x > 500:  # Reset when off-screen
+    self.x += self.dx
+    if self.x > 500:  # Reset when off-screen
       self.reset()
 
   def reset(self):
-    self.rect.x = -64
-    self.rect.y = choice(lanes)
+    self.x = -64
+    self.y = choice(lanes)
 
 # Define Bomb class
 class Bomb(GameObject):
@@ -66,13 +66,13 @@ class Bomb(GameObject):
     self.reset()
 
   def move(self):
-    self.rect.x += self.dx
-    if self.rect.x > 500:  # Reset when off-screen
+    self.x += self.dx
+    if self.x > 500:  # Reset when off-screen
       self.reset()
 
   def reset(self):
-    self.rect.x = -64
-    self.rect.y = choice(lanes)
+    self.x = -64
+    self.y = choice(lanes)
 
 # Define Player class
 class Player(GameObject):
