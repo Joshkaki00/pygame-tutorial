@@ -101,16 +101,13 @@ player = Player()
 falling_apple = [Apple() for _ in range(3)]
 moving_strawberry = [Strawberry() for _ in range(2)]
 
-# Load the images
-apple_image = 'apple.png'
-strawberry_image = 'strawberry.png'
+# Make a group
+all_sprites = pygame.sprite.Group()
 
-# Create lists to hold apples and strawberries
-falling_apple = [Apple() for _ in range(3)]
-moving_strawberry = [Strawberry() for _ in range(2)]
-
-# Load moving apple image
-apple = Apple()
+# Add sprites to group
+all_sprites.add(player)
+all_sprites.add(falling_apple)
+all_sprites.add(moving_strawberry)
 
 # Grid setup
 grid_size = 3
@@ -162,19 +159,10 @@ while running:
   for obj in objects:
     obj.render(screen)
 
-  # Move and render falling apple
-  for apple in falling_apple:
-    apple.move()
-    apple.render(screen)
-
-  # Move and render moving strawberry
-  for strawberry in moving_strawberry:
-    strawberry.move()
-    strawberry.render(screen)
-
-  # Move and render player
-  player.move()
-  player.render(screen)
+  # Move and render all sprites
+  for entity in all_sprites:
+     entity.move()
+     entity.render(screen)
 
   # Set the frame rate
   clock.tick(60)
