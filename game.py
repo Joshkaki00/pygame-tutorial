@@ -102,6 +102,16 @@ while running:
   for obj in objects:
     obj.render(screen)
 
+  # Move and render falling apple
+  for apple in falling_apple:
+    apple.move()
+    apple.render(screen)
+
+  # Move and render moving strawberry
+  for strawberry in moving_strawberry:
+    strawberry.move()
+    strawberry.render(screen)
+
   # Draw apple
   apple.move()
   apple.render(screen)
