@@ -125,6 +125,7 @@ for row in range(3):
 clock = pygame.time.Clock()
 
 # Create the game loop
+running = True
 while running:
   # Looks at events
   for event in pygame.event.get():
