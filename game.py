@@ -72,11 +72,12 @@ class Player(GameObject):
   def left(self):
     if self.current_x_lane > 0:
       self.current_x_lane -= 1
-      self.x = self.lanes_x[self.current_x_lane]
+    self.x = self.lanes_x[self.current_x_lane]
 
   def right(self):
     if self.current_x_lane < len(self.lanes_x) - 1:
       self.current_x_lane += 1
+    self.x = self.lanes_x[self.current_x_lane]
 
   def up(self):
     self.dy -= 100
