@@ -16,7 +16,7 @@ class GameObject(pygame.sprite.Sprite):
     self.surf = pygame.image.load(image).convert_alpha()
     self.rect = self.surf.get_rect(topleft=(x, y))
 
-	def move(self):
+  def move(self):
     pass
 
 # Define Apple class
