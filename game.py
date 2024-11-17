@@ -59,35 +59,62 @@ class Strawberry(GameObject):
     self.x = -64
 
 
-# Define Player class
+# Define Player class with animations
 class Player(GameObject):
-  def __init__(self):
-    lanes = [93, 218, 343]
-    super(Player, self).__init__(lanes[1], lanes[1], 'player.png')
-    self.lanes_x = lanes
-    self.lanes_y = lanes
-    self.current_x_lane = 1 # Start in the center lane for x
-    self.current_y_lane = 1 # Start in the center lane for y
+    def __init__(self):
+        # Load animation frames
+        self.frames = {
+            "idle": [pygame.image.load(f"player_idle_{i}.png").convert_alpha() for i in range(2)],
+            "move_left": [pygame.image.load(f"player_left_{i}.png").convert_alpha() for i in range(2)],
+            "move_right": [pygame.image.load(f"player_right_{i}.png").convert_alpha() for i in range(2)],
+            "move_up": [pygame.image.load(f"player_up_{i}.png").convert_alpha() for i in range(2)],
+            "move_down": [pygame.image.load(f"player_down_{i}.png").convert_alpha() for i in range(2)],
+        }
+        self.current_frame = 0
+        self.animation_speed = 0.1
+        self.time_since_last_frame = 0
+        self.current_animation = "idle"
 
-  def left(self):
-    if self.current_x_lane > 0:
-      self.current_x_lane -= 1
-    self.x = self.lanes_x[self.current_x_lane]
+        lanes = [93, 218, 343]
+        super(Player, self).__init__(lanes[1], lanes[1], self.frames["idle"][0])  # Start in the center
+        self.lanes_x = lanes
+        self.lanes_y = lanes
+        self.current_x_lane = 1
+        self.current_y_lane = 1
 
-  def right(self):
-    if self.current_x_lane < len(self.lanes_x) - 1:
-      self.current_x_lane += 1
-    self.x = self.lanes_x[self.current_x_lane]
+    def update_animation(self, dt):
+        self.time_since_last_frame += dt
+        if self.time_since_last_frame >= self.animation_speed:
+            self.time_since_last_frame = 0
+            self.current_frame = (self.current_frame + 1) % len(self.frames[self.current_animation])
+            self.surf = self.frames[self.current_animation][self.current_frame]
 
-  def up(self):
-    if self.current_y_lane > 0:
-      self.current_y_lane -= 1
-    self.y = self.lanes_y[self.current_y_lane]
+    def left(self):
+        if self.current_x_lane > 0:
+            self.current_x_lane -= 1
+        self.x = self.lanes_x[self.current_x_lane]
+        self.current_animation = "move_left"
 
-  def down(self):
-    if self.current_y_lane < len(self.lanes_y) - 1:
-      self.current_y_lane += 1
-    self.y = self.lanes_y[self.current_y_lane]
+    def right(self):
+        if self.current_x_lane < len(self.lanes_x) - 1:
+            self.current_x_lane += 1
+        self.x = self.lanes_x[self.current_x_lane]
+        self.current_animation = "move_right"
+
+    def up(self):
+        if self.current_y_lane > 0:
+            self.current_y_lane -= 1
+        self.y = self.lanes_y[self.current_y_lane]
+        self.current_animation = "move_up"
+
+    def down(self):
+        if self.current_y_lane < len(self.lanes_y) - 1:
+            self.current_y_lane += 1
+        self.y = self.lanes_y[self.current_y_lane]
+        self.current_animation = "move_down"
+
+    def reset_animation(self):
+        self.current_animation = "idle"
 
 # Make an instance of Player
 player = Player()
