@@ -177,10 +177,22 @@ while running:
   # Check for collisions
   fruit = pygame.sprite.spritecollideany(player, fruit_sprites)
   if fruit:
-    fruit.reset()
+    fruit.reset() # Reset the fruit
+    apple.increase_speed() # Increase apple speed
+    strawberry.increase_speed() # Increase strawberry speed
+    bomb.increase_speed() # Increase bomb speed
 
+  # Check collision with bomb
   if pygame.sprite.collide_rect(player, bomb):
-    running = False
+    # Resets all sprites and ends game
+    player.reset()
+    apple.reset()
+    strawberry.reset()
+    bomb.reset()
+    apple.dy = (randint(20, 50) / 100) + 1
+    strawberry.dx = (randint(20, 50) / 100) + 1
+    bomb.dx = (randint(20, 50) / 100) + 1
+    print("Game Over!")
 
   # Set the frame rate
   clock.tick(60)
