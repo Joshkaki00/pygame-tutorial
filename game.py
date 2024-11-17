@@ -67,16 +67,16 @@ class Player(GameObject):
     self.reset()
 
   def left(self):
-    pass
+    self.dx -= 100
 
   def right(self):
-    pass
+    self.dx += 100
 
   def up(self):
-    pass
+    self.dy -= 100
 
   def down(self):
-    pass
+    self.dy += 100
 
   def move(self):
     self.x -= (self.x - self.dx) * 0.25
