@@ -147,18 +147,18 @@ while running:
   # Looks at events
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
-      running = False
-    elif event.type == pygame.KEYDOWN:
-      if event.key == pygame.K_ESCAPE:
         running = False
-      elif event.key == pygame.K_LEFT:
-        player.left()
-      elif event.key == pygame.K_RIGHT:
-        player.right()
-      elif event.key == pygame.K_UP:
-        player.up()
-      elif event.key == pygame.K_DOWN:
-        player.down()
+    elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_ESCAPE:
+            running = False
+        elif event.key == pygame.K_LEFT:
+            player.left()
+        elif event.key == pygame.K_RIGHT:
+            player.right()
+        elif event.key == pygame.K_UP:
+            player.up()
+        elif event.key == pygame.K_DOWN:
+            player.down()
 
   # Clear screen
   screen.fill((255, 255, 255))
@@ -177,7 +177,8 @@ while running:
     strawberry.move()
     strawberry.render(screen)
 
-  # Draw player 
+  # Move and render player
+  player.move()
   player.render(screen)
 
   # Set the frame rate
