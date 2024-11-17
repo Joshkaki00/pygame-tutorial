@@ -27,7 +27,6 @@ class Apple(GameObject):
    self.reset() # call reset here! 
 
  def move(self):
-   self.x += self.dx
    self.y += self.dy
    # Check the y position of the apple
    if self.y > 500: 
