@@ -59,7 +59,7 @@ class Strawberry(GameObject):
     self.x = -64
 
 
-# Define Player class
+# Add moving animations for the Player class
 class Player(GameObject):
   def __init__(self):
     lanes = [93, 218, 343]
@@ -68,26 +68,48 @@ class Player(GameObject):
     self.lanes_y = lanes
     self.current_x_lane = 1 # Start in the center lane for x
     self.current_y_lane = 1 # Start in the center lane for y
+    self.target_x = self.x
+    self.target_y = self.y
+    self.speed = 10
 
   def left(self):
     if self.current_x_lane > 0:
       self.current_x_lane -= 1
-    self.x = self.lanes_x[self.current_x_lane]
+    self.target_x = self.lanes_x[self.current_x_lane]
 
   def right(self):
     if self.current_x_lane < len(self.lanes_x) - 1:
       self.current_x_lane += 1
-    self.x = self.lanes_x[self.current_x_lane]
+    self.target_x = self.lanes_x[self.current_x_lane]
 
   def up(self):
     if self.current_y_lane > 0:
       self.current_y_lane -= 1
-    self.y = self.lanes_y[self.current_y_lane]
+    self.target_y = self.lanes_y[self.current_y_lane]
 
   def down(self):
     if self.current_y_lane < len(self.lanes_y) - 1:
       self.current_y_lane += 1
-    self.y = self.lanes_y[self.current_y_lane]
+    self.target_y = self.lanes_y[self.current_y_lane]
+
+  def move(self):
+    if self.x < self.target_x:
+      self.x += self.speed
+      if self.x > self.target_x:
+        self.x = self.target_x
+    elif self.x > self.target_x:
+      self.x -= self.speed
+      if self.x < self.target_x:
+        self.x = self.target_x
+
+    if self.y < self.target_y:
+      self.y += self.speed
+      if self.y > self.target_y:
+        self.y = self.target_y
+    elif self.y > self.target_y:
+      self.y -= self.speed
+      if self.y < self.target_y:
+        self.y = self.target_y
 
 # Make an instance of Player
 player = Player()
