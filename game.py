@@ -45,12 +45,12 @@ class Strawberry(GameObject):
     super(Strawberry, self).__init__(-64, y, 'strawberry.png')
     self.dx = (randint(100, 200) / 100) + 1 # Random horizontal speed
 
-    def move(self):
-      self.x += self.dx
-      # Reset strawberry if it goes off screen
-      if self.x > 500:
-        self.x = -64 # Start off screen
-        self.y = randint(0, 450) # New random y position
+  def move(self):
+    self.x += self.dx
+    # Reset strawberry if it goes off screen
+    if self.x > 500:
+      self.x = -64 # Start off screen
+      self.y = randint(0, 450) # New random y position
 
 # Load the images
 apple_image = 'apple.png'
