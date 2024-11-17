@@ -65,7 +65,6 @@ class Player(GameObject):
         self.dy = self.rect.y  # Target y position
 
     def snap_to_lane(self):
-
         self.rect.x = min(self.lanes, key=lambda lane: abs(lane - self.rect.x))
         self.rect.y = min(self.lanes, key=lambda lane: abs(lane - self.rect.y))
 
@@ -101,14 +100,14 @@ class Player(GameObject):
 
 # Make instances of sprites
 player = Player()
-falling_apple = [Apple() for _ in range(3)]
-moving_strawberry = [Strawberry() for _ in range(2)]
+falling_apples = [Apple() for _ in range(3)]
+moving_strawberries = [Strawberry() for _ in range(2)]
 
 # Make a group
 all_sprites = pygame.sprite.Group()
 
 # Add sprites to group
-all_sprites.add(player, *falling_apple, *moving_strawberry)
+all_sprites.add(player, *falling_apples, *moving_strawberries)
  
 # Get the clock
 clock = pygame.time.Clock()
