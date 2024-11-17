@@ -41,6 +41,10 @@ class Apple(GameObject):
   def reset(self):
     self.x = choice(lanes)
     self.y = -64
+    self.dy = (randint(20, 50) / 100) + 1
+
+  def increase_speed(self):
+    self.dy += 0.1
 
 # Define Strawberry class
 class Strawberry(GameObject):
