@@ -171,10 +171,6 @@ while running:
     strawberry.move()
     strawberry.render(screen)
 
-  # Draw apple
-  apple.move()
-  apple.render(screen)
-
   # Draw player 
   player.move()
   player.render(screen)
