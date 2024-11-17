@@ -73,27 +73,26 @@ class Player(GameObject):
             self.dx = self.lanes[self.lanes.index(self.rect.x) - 1]  # Set target to the previous lane
 
     def right(self):
-        if self.x < self.lanes[-1]:  # Check if not already in the rightmost lane
+        if self.rect.x < self.lanes[-1]:  # Check if not already in the rightmost lane
             self.dx = self.lanes[self.lanes.index(self.rect.x) + 1]  # Set target to the next lane
 
     def up(self):
-        if self.y > self.lanes[0]:  # Check if not already in the topmost lane
+        if self.rect.y > self.lanes[0]:  # Check if not already in the topmost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) - 1]  # Set target to the previous lane
 
     def down(self):
-        if self.y < self.lanes[-1]:  # Check if not already in the bottommost lane
+        if self.rect.y < self.lanes[-1]:  # Check if not already in the bottommost lane
             self.dy = self.lanes[self.lanes.index(self.rect.y) + 1]  # Set target to the next lane
 
     def move(self):
         # Smoothly move the player to the target position using an easing function
-        self.x -= (self.x - self.dx) * 0.25
+        self.rect.x -= (self.x - self.dx) * 0.25
         self.rect.x -= (self.rect.x - self.dx) * 0.25
         self.rect.y -= (self.rect.y - self.dy) * 0.25
 
         # Snap to target position when close enough
-        if abs(self.x - self.dx) < 1:
-            if abs(self.x - self.dx) < 1:
-              self.rect.x = self.dx
+        if abs(self.rect.x - self.dx) < 1:
+            self.rect.x = self.dx
         if abs(self.rect.y - self.dy) < 1:
             if (self.rect.y - self.dy) < 1:
                self.rect.y = self.dy
