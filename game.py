@@ -61,33 +61,47 @@ class Strawberry(GameObject):
 
 # Define Player class
 class Player(GameObject):
-  def __init__(self):
-    lanes = [93, 218, 343]
-    super(Player, self).__init__(lanes[1], lanes[1], 'player.png')
-    self.lanes_x = lanes
-    self.lanes_y = lanes
-    self.current_x_lane = 1 # Start in the center lane for x
-    self.current_y_lane = 1 # Start in the center lane for y
+    def __init__(self):
+        lanes = [93, 218, 343]
+        super(Player, self).__init__(lanes[1], lanes[1], 'player.png')  # Start in the center
+        self.lanes = lanes
+        self.dx = 0
+        self.dy = 0
 
-  def left(self):
-    if self.current_x_lane > 0:
-      self.current_x_lane -= 1
-    self.x = self.lanes_x[self.current_x_lane]
+    def left(self):
+        # Move left only if not in the first lane
+        if self.lanes.index(self.x) > 0:
+            self.dx -= 100
 
-  def right(self):
-    if self.current_x_lane < len(self.lanes_x) - 1:
-      self.current_x_lane += 1
-    self.x = self.lanes_x[self.current_x_lane]
+    def right(self):
+        # Move right only if not in the last lane
+        if self.lanes.index(self.x) < len(self.lanes) - 1:
+            self.dx += 100
 
-  def up(self):
-    if self.current_y_lane > 0:
-      self.current_y_lane -= 1
-    self.y = self.lanes_y[self.current_y_lane]
+    def up(self):
+        # Move up only if not in the first lane
+        if self.lanes.index(self.y) > 0:
+            self.dy -= 100
 
-  def down(self):
-    if self.current_y_lane < len(self.lanes_y) - 1:
-      self.current_y_lane += 1
-    self.y = self.lanes_y[self.current_y_lane]
+    def down(self):
+        # Move down only if not in the last lane
+        if self.lanes.index(self.y) < len(self.lanes) - 1:
+            self.dy += 100
+
+    def move(self):
+        # Update position based on dx and dy
+        new_x = self.x + self.dx
+        new_y = self.y + self.dy
+
+        # Snap to the closest lane
+        if new_x in self.lanes:
+            self.x = new_x
+        if new_y in self.lanes:
+            self.y = new_y
+
+        # Reset dx and dy after the move to avoid continuous movement
+        self.dx = 0
+        self.dy = 0
 
 # Make an instance of Player
 player = Player()
