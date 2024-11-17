@@ -89,9 +89,6 @@ class Player(GameObject):
       self.current_y_lane += 1
     self.y = self.lanes_y[self.current_y_lane]
 
-  def move(self):
-    self.x -= (self.x - self.dx) * 0.25
-    self.y -= (self.y - self.dy) * 0.25
 
 # Make an instance of Player
 player = Player()
