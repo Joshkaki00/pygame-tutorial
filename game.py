@@ -208,9 +208,6 @@ while running:
     apple.reset()
     strawberry.reset()
     bomb.reset()
-    apple.dy = (randint(20, 50) / 100) + 1
-    strawberry.dx = (randint(20, 50) / 100) + 1
-    bomb.dx = (randint(20, 50) / 100) + 1
     print("Game Over!")
 
   # Set the frame rate
