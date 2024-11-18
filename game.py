@@ -44,7 +44,7 @@ class Apple(GameObject):
     self.dy = (randint(20, 50) / 100) + 1
 
   def increase_speed(self):
-    self.dy += 1
+    self.dy += 0.5
 
 # Define Strawberry class
 class Strawberry(GameObject):
@@ -64,7 +64,7 @@ class Strawberry(GameObject):
     self.dx = (randint(20, 50) / 100) + 1
 
   def increase_speed(self):
-    self.dx += 1
+    self.dx += 0.5
 
 # Define Bomb class
 class Bomb(GameObject):
@@ -75,7 +75,7 @@ class Bomb(GameObject):
 
   def move(self):
     self.x += self.dx
-    if self.x > 500:  # Reset when off-screen
+    if self.x > 500 or self.x < -64 or self.y > 500 or self.y < -64:  # Reset when off-screen
       self.reset()
 
   def reset(self):
