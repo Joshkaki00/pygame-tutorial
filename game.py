@@ -208,7 +208,7 @@ while running:
     apple.reset()
     strawberry.reset()
     bomb.reset()
-    print("Game Over!")
+    running = False
 
   # Set the frame rate
   clock.tick(60)
