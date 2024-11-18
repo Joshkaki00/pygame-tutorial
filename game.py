@@ -90,6 +90,11 @@ class Bomb(GameObject):
       self.y = choice(lanes)
       self.dx = -((randint(20, 50) / 100) + 1)
       self.dy = 0
+    elif direction == 3:
+      self.x = choice(lanes)
+      self.y = -64
+      self.dx = 0
+      self.dy = (randint(0, 200) / 100) + 1
 
   def increase_speed(self):
     self.dx += 1
