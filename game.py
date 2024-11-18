@@ -79,9 +79,17 @@ class Bomb(GameObject):
       self.reset()
 
   def reset(self):
-    self.x = -64
-    self.y = choice(lanes)
-    self.dx = (randint(20, 50) / 100) + 1
+    direction = randint(1, 4)
+    if direction == 1:
+      self.x = -64
+      self.y = choice(lanes)
+      self.dx = (randint(20, 50) / 100) + 1
+      self.dy = 0
+    elif direction == 2:
+      self.x = 500
+      self.y = choice(lanes)
+      self.dx = -((randint(20, 50) / 100) + 1)
+      self.dy = 0
 
   def increase_speed(self):
     self.dx += 1
