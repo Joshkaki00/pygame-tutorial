@@ -102,7 +102,8 @@ class Bomb(GameObject):
       self.dy = -((randint(0, 200) / 100) + 1)
 
   def increase_speed(self):
-    self.dx += 1
+    self.dx += 0.5 if self.dx > 0 else -0.5
+    self.dy += 0.5 if self.dy > 0 else -0.5
 
 # Define Player class
 class Player(GameObject):
